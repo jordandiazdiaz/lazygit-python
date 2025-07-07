@@ -2,6 +2,12 @@
 
 A Python clone of lazygit with terminal UI for Git operations.
 
+## 🚀 Quick Start
+
+```bash
+python -m lazygit
+```
+
 ## Features
 
 - 📁 File staging/unstaging with visual status indicators
@@ -17,16 +23,57 @@ A Python clone of lazygit with terminal UI for Git operations.
 
 ## Installation
 
+### Method 1: Install from source (recommended)
+
 ```bash
 # Clone the repository
 git clone <repository-url>
 cd lazygit-python
 
-# Install in development mode
-pip install -e .
+# Install using pip
+pip install .
 
-# Or install dependencies directly
-pip install -r requirements.txt
+# Or install in development mode
+pip install -e .
+```
+
+### Method 2: Install from PyPI (when available)
+
+```bash
+pip install lazygit-python
+```
+
+### Method 3: Standalone Installers
+
+Download pre-built installers for your platform:
+
+#### Windows
+- Download `lazygit-python-0.1.0-setup.exe` from releases
+- Run the installer and follow the setup wizard
+- The application will be available in Start Menu and Desktop
+
+#### macOS
+- Download `lazygit-python-0.1.0.dmg` from releases
+- Open the DMG and drag the app to Applications
+- Run from Applications or use `lazygit-py` in terminal
+
+#### Linux
+- **AppImage**: Download `lazygit-python-0.1.0-x86_64.AppImage`, make executable with `chmod +x`, and run
+- **Debian/Ubuntu**: Download `lazygit-python_0.1.0_all.deb` and install with `sudo dpkg -i`
+- **Snap**: `sudo snap install lazygit-python` (when available)
+
+### Method 4: Build from source
+
+```bash
+# Clone and enter directory
+git clone <repository-url>
+cd lazygit-python
+
+# Build standalone executable
+make installer
+
+# Or build specific format
+python build_installers.py [pyinstaller|windows|macos|linux]
 ```
 
 ## Usage
@@ -34,10 +81,13 @@ pip install -r requirements.txt
 Run from within a git repository:
 
 ```bash
-# If installed
+# If installed via pip or installer
 lazygit-py
 
-# Or run directly
+# Short alias
+lgpy
+
+# Or run directly with Python
 python -m lazygit
 ```
 

@@ -1,0 +1,7 @@
+Este es un archivo de prueba para demostrar las funcionalidades de lazygit-python.
+
+Características:
+- Staging de archivos
+- Commits
+- Gestión de ramas
+- Y mucho más!
