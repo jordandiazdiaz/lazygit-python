@@ -37,7 +37,7 @@ pip install .
 pip install -e .
 ```
 
-### Method 2: Install from PyPI (when available)
+### Method 2: Install from PyPI
 
 ```bash
 pip install lazygit-python
