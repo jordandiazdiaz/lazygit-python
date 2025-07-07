@@ -76,6 +76,88 @@ make installer
 python build_installers.py [pyinstaller|windows|macos|linux]
 ```
 
+## 🔧 Building Installers
+
+You can create platform-specific installers using the included build script:
+
+### Prerequisites
+
+- Python 3.8+
+- Git
+- Platform-specific tools (see below)
+
+### Build Commands
+
+```bash
+# Build for current platform (auto-detects)
+python build_installers.py
+
+# Build PyInstaller executable only
+python build_installers.py pyinstaller
+
+# Build Windows installer (.exe)
+python build_installers.py windows
+
+# Build macOS app bundle and DMG
+python build_installers.py macos
+
+# Build Linux packages (deb, AppImage)
+python build_installers.py linux
+```
+
+### Platform-Specific Requirements
+
+#### Windows
+- **NSIS** (Nullsoft Scriptable Install System) for `.exe` installer
+- Install from: https://nsis.sourceforge.io/
+- After running the build script, execute: `makensis installer.nsi`
+
+#### macOS
+- **Xcode Command Line Tools** for DMG creation
+- Install with: `xcode-select --install`
+- After running the build script, execute: `./create_dmg.sh`
+
+#### Linux
+- **Standard build tools** (gcc, make, etc.)
+- **wget** for AppImage tools
+- For Debian packages: `sudo apt-get install build-essential`
+- After running the build script, execute: `./build_appimage.sh`
+
+### Build Output
+
+The build process creates the following files:
+
+- **Windows**: `lazygit-python-0.1.0-setup.exe`
+- **macOS**: `lazygit-python-0.1.0.dmg`
+- **Linux**: 
+  - `lazygit-python-0.1.0-x86_64.AppImage`
+  - `lazygit-python_0.1.0_all.deb`
+- **All platforms**: `dist/lazygit-py` (standalone executable)
+
+### Distribution
+
+1. Run the appropriate build command for your platform
+2. Test the generated installer/package
+3. Upload to GitHub Releases or your preferred distribution method
+
+### Troubleshooting
+
+**PyInstaller Issues:**
+- Ensure all dependencies are installed: `pip install -r requirements.txt`
+- For missing modules, add them to `hiddenimports` in the spec file
+
+**Windows NSIS Issues:**
+- Make sure NSIS is in your PATH
+- Check that `dist/lazygit-py.exe` exists before running NSIS
+
+**macOS Code Signing:**
+- For distribution, you may need to sign the app: `codesign -s "Your Developer ID" dist/lazygit-py`
+- For notarization, use `xcrun notarytool`
+
+**Linux Dependencies:**
+- AppImage requires `fuse` to run: `sudo apt-get install fuse`
+- For older systems, you may need to install `libfuse2`
+
 ## Usage
 
 Run from within a git repository:
